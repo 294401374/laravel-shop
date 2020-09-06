@@ -1,5 +1,6 @@
 <?php
     
-    function test_func(){
-        return 'test_function';
+    function route_class()
+    {
+        return str_replace('.', '-', Route::currentRouteName());
     }
