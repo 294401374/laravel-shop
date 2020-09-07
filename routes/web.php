@@ -15,9 +15,8 @@ use Illuminate\Support\Facades\Auth;
 */
     
 Route::get('/', 'PagesController@root')->name('root');
-Route::get('/test', function(){
-    echo 'test.Route';
-});
+// 登录相关路由
 Auth::routes();
+// 邮箱认证
+Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->name('home');
