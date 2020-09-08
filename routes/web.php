@@ -23,8 +23,14 @@ Auth::routes(['verify' => true]);
 Route::group(['middleware' => ['auth', 'verified']], function() {
     // 用户地址列表
     Route::get('user_addresses', 'UserAddressesController@index')->name('user_addresses.index');
-    // 新增&&修改地址页面
+    // 新增收货地址页面
     Route::get('user_addresses/create', 'UserAddressesController@create')->name('user_addresses.create');
-    // 新增地址
+    // 新增收货地址
     Route::post('user_addresses', 'UserAddressesController@store')->name('user_addresses.store');
+    // 收货地址编辑页面
+    Route::get('user_addresses/{user_address}', 'UserAddressesController@edit')->name('user_addresses.edit');
+    // 更新收货地址
+    Route::put('user_addresses/{user_address}', 'UserAddressesController@update')->name('user_addresses.update');
+    // 删除收货地址
+    Route::delete('user_addresses/{user_address}', 'UserAddressesController@destroy')->name('user_addresses.destroy');
 });
