@@ -83,7 +83,7 @@ class UserAddressesController extends Controller
     {
         $this->authorize('own', $userAddress);
         $userAddress->delete();
-        return redirect()->route('user_addresses.index');
+        return [];
     }
     
 }
