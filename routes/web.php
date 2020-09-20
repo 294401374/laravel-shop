@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Auth;
 |
 */
     
-Route::get('/', 'PagesController@root')->name('root');
+Route::redirect('/', '/products')->name('root');
+Route::get('products', 'ProductsController@index')->name('products.index');
 // 登录相关路由
 Auth::routes();
 // 邮箱认证
