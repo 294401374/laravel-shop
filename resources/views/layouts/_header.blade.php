@@ -34,6 +34,7 @@
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 {{ csrf_field() }}
                             </form>
+                            <a href="{{ route('products.favorites') }}" class="dropdown-item">我的收藏</a>
                         </div>
                     </li>
                 @endguest

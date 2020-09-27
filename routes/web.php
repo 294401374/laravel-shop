@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Auth;
     
 Route::redirect('/', '/products')->name('root');
 Route::get('products', 'ProductsController@index')->name('products.index');
-Route::get('products/{product}', 'ProductsController@show')->name('products.show');
 // 登录相关路由
 Auth::routes();
 // 邮箱认证
@@ -36,7 +35,12 @@ Route::group(['middleware' => ['auth', 'verified']], function() {
     // 删除收货地址
     Route::delete('user_addresses/{user_address}', 'UserAddressesController@destroy')->name('user_addresses.destroy');
     // 收藏
-    Route::post('product/{product}/favorite', 'ProductsController@favor')->name('products.favor');
+    Route::post('products/{product}/favorite', 'ProductsController@favor')->name('products.favor');
     // 取消收藏
-    Route::delete('product/{product}/favorite', 'ProductsController@disfavor')->name('products.disfavor');
+    Route::delete('products/{product}/favorite', 'ProductsController@disfavor')->name('products.disfavor');
+    // 收藏列表
+    Route::get('products/favorites', 'ProductsController@favorites')->name('products.favorites');
+
 });
+// 商品详情
+Route::get('products/{product}', 'ProductsController@show')->name('products.show');
